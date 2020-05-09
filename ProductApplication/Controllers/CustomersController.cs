@@ -71,7 +71,7 @@ namespace ProductApplication.Controllers
         }
 
         // POST: api/Customers
-        [ResponseType(typeof(Customer))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult PostCustomer(Customer customer)
         {
             if (!ModelState.IsValid)

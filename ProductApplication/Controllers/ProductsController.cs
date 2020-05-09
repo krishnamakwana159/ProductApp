@@ -73,7 +73,7 @@ namespace ProductApplication.Controllers
         }
 
         // POST: api/Products
-        [ResponseType(typeof(Product))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult PostProduct(Product product)
         {
             if (!ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace ProductApplication.Controllers
             db.Products.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductCode }, product);
+            return Ok();
         }
 
         // DELETE: api/Products/5

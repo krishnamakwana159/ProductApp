@@ -1,0 +1,55 @@
+<h2 style="text-align:center;">Product Add</h2>
+{{ result | json }}
+<div class="container">
+	<div class="row">    
+		<div class="col-lg-6 col-md-8 mx-auto mt-lg-5">			
+      <form [formGroup]="addProductFormGroup"  class="account_form">
+					<div class="form-group">
+							<label>Product Name</label>
+							<input type="text" formControlName="pname" class="form-control" />
+							</div>
+					
+						<div class="form-group" *ngIf="result">
+              <label>Brand</label>
+              <select (change)="selectBrand($event)" class="custom-select" formControlName="brand" [(ngModel)]="brandd">
+                
+                <option class="dropdown-item active">----select----</option>
+                <option *ngFor="let res of result" [(ngValue)]="res.BrandId" > 
+                  {{ res.BrandName }}</option>
+              </select>
+							<!-- <label>Brand Code</label> 
+							<input type="number" formControlName="bcode" class="form-control"/> -->
+            </div>
+				 
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0" style="margin-right: 10dp;">Availability</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="stts" name="stts" id="gridRadios1" value=1>
+                <label class="form-check-label">
+                  Available
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" formControlName="stts" type="radio" name="stts" id="gridRadios2" value=0>
+                <label class="form-check-label">
+                  Not Available
+                </label>
+              </div>        
+            </div>
+          </div>
+        </fieldset>
+				<div class="form-group">
+							<label>Price</label>
+							<input type="number" formControlName="price" class="form-control"/>
+        </div>        
+			</form>
+      <div class="form-group">
+				<button [disabled]="addProductFormGroup.invalid" class="btn btn-primary" (click)="addProduct()" >Add Product</button>
+      </div>			     
+		</div>
+	</div>
+</div>
+
+<router-outlet></router-outlet>
